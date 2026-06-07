@@ -1,7 +1,10 @@
 from agents.requirement_agent import requirement_agent
+from agents.planning_agent import planning_agent
 
 user_request = input("ENTER YOUR PROJECT REQUIREMENT :")
 
-result=requirement_agent(user_request)
+requirement_agent_output=requirement_agent(user_request)
 
-print(result)
+project_plan=planning_agent(requirement_agent_output)
+
+print(project_plan)

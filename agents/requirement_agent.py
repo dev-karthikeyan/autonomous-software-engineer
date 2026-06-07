@@ -4,7 +4,7 @@ from langchain_core.messages import HumanMessage
 
 load_dotenv()
 
-llm=ChatMistralAI(model="mistral-small-2603")
+model=ChatMistralAI(model="mistral-small-2603")
 
 def requirement_agent(user_request:str) :
 
@@ -24,7 +24,7 @@ def requirement_agent(user_request:str) :
 
 """
     
-    responce=llm.invoke([HumanMessage(content=prompt)])
+    responce=model.invoke([HumanMessage(content=prompt)])
 
     return responce.content 
 
