@@ -1,7 +1,10 @@
 from orchestrator.orchestrator import run_project
+from tools.file_tools import create_project_files
 
-user_request = input("ENTER YOUR PROJECT REQUIREMENT :")
+user_request = input("ENTER YOUR PROJECT REQUIREMENT : ")
 
-reponse=run_project(user_request)
+coding_agent_output = run_project(user_request)
 
-print(reponse)
+result = create_project_files(coding_agent_output)
+
+print(result)
