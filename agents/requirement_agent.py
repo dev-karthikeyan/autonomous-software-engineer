@@ -4,29 +4,36 @@ from langchain_core.messages import HumanMessage
 
 load_dotenv()
 
-model=ChatMistralAI(model="mistral-small-2603")
+model = ChatMistralAI(model="mistral-small-2603")
 
-def requirement_agent(user_request:str) :
+def requirement_agent(user_request: str):
 
     prompt = f"""
+You are a Senior Software Requirements Analyst.
 
-    You are a Senior Software Requirements Analyst.
+Analyze the user's request and create a detailed software requirements document.
 
-    Analyze the user request and extract:
+Extract:
 
-    1. Project Type
-    2. Features
-    3. Technologies
-    4. Expected Output
+1. Project Type
+2. Project Goal
+3. Core Features
+4. Functional Requirements
+5. Non-Functional Requirements
+6. Suggested Technologies
+7. Inputs
+8. Outputs
+9. Constraints
+10. Assumptions
 
-    user_request :
-                 {user_request}
+User Request:
+{user_request}
 
+Return a structured requirements document.
 """
-    
-    responce=model.invoke([HumanMessage(content=prompt)])
 
-    return responce.content 
+    response = model.invoke(
+        [HumanMessage(content=prompt)]
+    )
 
-
-
+    return response.content

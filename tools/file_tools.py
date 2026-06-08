@@ -5,6 +5,13 @@ def create_project_files(coding_agent_output: str):
 
     files = json.loads(coding_agent_output)
 
+    print(type(files))
+
+    for path, content in files.items():
+        print("PATH =", path)
+        print("CONTENT TYPE =", type(content))
+        break
+
     for path, content in files.items():
 
         full_path = os.path.join(
