@@ -1,128 +1,71 @@
-# Autonomous Software Engineer
+# 🤖 Autonomous Software Engineer
 
-An AI-powered multi-agent system that transforms a user requirement into a structured software project.
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat-square)
+![LangChain](https://img.shields.io/badge/LangChain-latest-green?style=flat-square)
+![Mistral AI](https://img.shields.io/badge/Mistral_AI-latest-orange?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.0-gray?style=flat-square)
 
-The system analyzes requirements, creates a development plan, generates source code, and automatically builds the project structure.
-
----
-
-## Overview
-
-This project demonstrates how multiple AI agents can collaborate to automate the early stages of software development.
-
-The workflow consists of:
-
-1. Requirement Analysis
-2. Project Planning
-3. Code Generation
-4. File Creation
+A multi-agent AI system that transforms a plain-English requirement into a fully scaffolded software project — analysis, planning, code generation, and file creation, end-to-end.
 
 ---
 
-## Features
+## How it works
 
-* Requirement Analysis Agent
-* Project Planning Agent
-* Code Generation Agent
-* Automatic File Creation
-* Multi-Agent Architecture
-* JSON-Based Project Generation
-* End-to-End Project Scaffolding
+Four agents collaborate in sequence. Each one hands off its output to the next, building from raw requirement all the way to files on disk.
 
----
-
-## Workflow
-
-```text
-User Requirement
-       ↓
-Requirement Agent
-       ↓
-Planning Agent
-       ↓
-Coding Agent
-       ↓
-Project JSON Output
-       ↓
-File Creation Tool
-       ↓
-Generated Software Project
+```
+User Requirement → Requirement Agent → Planning Agent → Coding Agent → File Creation → Generated Project
 ```
 
 ---
 
-## Architecture
+## Agents
 
-### Requirement Agent
+### 🔍 Requirement Agent
+Parses the user prompt and extracts structured intent.
+- **Outputs:** Project type · Features · Tech stack
 
-Analyzes the user's request and extracts:
+### 🗺️ Planning Agent
+Designs the architecture and development plan.
+- **Outputs:** Modules · Folder structure · Tasks
 
-* Project Type
-* Features
-* Technologies
-* Expected Output
+### 💻 Coding Agent
+Generates all source files as structured JSON.
+- **Outputs:** Source code · Config files · Dependencies
 
-### Planning Agent
+### 📁 File Creation Tool
+Converts the JSON output into real files and folders on disk.
+- **Outputs:** Writes files · Creates directories
 
-Creates:
+---
 
-* Project Architecture
-* Recommended Tech Stack
-* Modules
-* Development Tasks
-* Folder Structure
+## Coding Agent Output Format
 
-### Coding Agent
-
-Generates:
-
-* Source Code
-* Project Structure
-* Configuration Files
-* Dependencies
-
-Example Output:
+The coding agent returns a JSON map of file paths to file contents, which the file creation tool then materialises.
 
 ```json
 {
-  "main.py": "...",
-  "requirements.txt": "...",
-  "src/app.py": "..."
+  "main.py": "# Entry point\n...",
+  "requirements.txt": "langchain\nmistralai\nrich",
+  "src/app.py": "# Core app logic\n...",
+  "src/config.py": "# Environment config\n..."
 }
 ```
-
-### File Creation Tool
-
-Converts the generated JSON into actual files and folders.
-
----
-
-## Tech Stack
-
-* Python
-* LangChain
-* Mistral AI
-* Rich
-* Python Dotenv
 
 ---
 
 ## Project Structure
 
-```text
+```
 autonomous-software-engineer/
-│
 ├── agents/
 │   ├── requirement_agent.py
 │   ├── planning_agent.py
 │   └── coding_agent.py
-│
 ├── orchestrator/
 │   └── orchestrator.py
-│
 ├── tools/
 │   └── file_tools.py
-│
 ├── main.py
 ├── requirements.txt
 ├── .gitignore
@@ -131,99 +74,88 @@ autonomous-software-engineer/
 
 ---
 
-## Usage
+## Tech Stack
 
-Run the application:
+| Technology | Role |
+|---|---|
+| Python | Core language |
+| LangChain | Agent orchestration |
+| Mistral AI | LLM backend |
+| Rich | Terminal UI |
+| python-dotenv | Environment config |
+
+---
+
+## Usage
 
 ```bash
 python main.py
 ```
 
-Example:
+Then enter your requirement at the prompt:
 
-```text
-ENTER YOUR PROJECT REQUIREMENT :
+```
+ENTER YOUR PROJECT REQUIREMENT:
 
 Build a weather application
 ```
 
-The system will:
-
-1. Analyze the requirement
-2. Create a project plan
-3. Generate source code
-4. Create project files automatically
+The system analyses the requirement, plans the architecture, generates source code, and writes the project to disk — no manual scaffolding needed.
 
 ---
 
-## Example Requests
+## Example Prompts
 
-```text
+```
 Build a weather app
 ```
-
-```text
-Create a chatbot using Python
 ```
-
-```text
+Create a Python chatbot
+```
+```
 Build a task management application
 ```
-
-```text
+```
 Create a personal finance tracker
 ```
 
 ---
 
-## Current Version
+## Roadmap
 
-### Version 1
-
-Implemented:
-
-* Requirement Agent
-* Planning Agent
-* Coding Agent
-* Project File Generation
-
----
-
-## Future Improvements
-
-* Review Agent
-* Documentation Agent
-* Self-Correction Loop
-* Testing Agent
-* Deployment Agent
-* Web Dashboard
-* Multi-Model Support
-* GitHub Repository Generation
+| Status | Feature | Description |
+|---|---|---|
+| ✅ Done | Core pipeline | Requirement → Planning → Coding → File creation |
+| 🔜 Next | Review agent | Validates and critiques generated code before writing to disk |
+| 🔜 Next | Testing agent | Auto-generates unit tests for produced source files |
+| 📌 Planned | Self-correction loop | Agents retry and refine on validation failure |
+| 📌 Planned | Documentation agent | Generates README and inline docs automatically |
+| 📌 Planned | Deployment agent | Scaffolds CI/CD config and deploys to cloud targets |
+| 📌 Planned | GitHub integration | Creates repo, commits, and opens PRs automatically |
+| 📌 Planned | Web dashboard | Visual interface for monitoring agent runs |
 
 ---
 
-## Learning Outcomes
+## What You'll Learn
 
-This project explores:
-
-* Multi-Agent Systems
-* LLM Orchestration
-* Prompt Engineering
-* AI Workflow Design
-* Automated Code Generation
-* Project Scaffolding
-* LangChain Integration
+- Multi-agent system design
+- LLM orchestration patterns
+- Prompt engineering
+- AI workflow design
+- Automated code generation
+- Project scaffolding
+- LangChain integration
 
 ---
 
 ## Contributing
 
-Contributions, suggestions, and improvements are welcome.
+Contributions, suggestions, and pull requests are welcome. Fork the repo, make your changes, and open a PR.
 
-Feel free to fork the repository and submit pull requests.
+The long-term vision is a fully autonomous AI engineering system that can plan, generate, review, test, and deploy complete software applications.
 
 ---
 
 ## Project Vision
 
-The long-term goal of this project is to evolve from a project generator into an autonomous AI software engineering system capable of planning, generating, reviewing, testing, and eventually deploying complete software applications.
+> Evolve from a project generator into an autonomous AI software engineering system capable of planning, generating, reviewing, testing, and eventually deploying complete software applications.
